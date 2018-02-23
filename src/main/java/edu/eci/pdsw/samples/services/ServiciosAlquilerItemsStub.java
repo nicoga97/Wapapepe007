@@ -206,6 +206,12 @@ public class ServiciosAlquilerItemsStub extends ServiciosAlquiler implements Ser
 
     }
     
+    @Override
+    public Map<Integer,Item> getItemsDisponibles(){
+    	return itemsDisponibles;
+    }
+    
+    
     
     @Override
     public void registrarDevolucion(int iditem) throws ExcepcionServiciosAlquiler{

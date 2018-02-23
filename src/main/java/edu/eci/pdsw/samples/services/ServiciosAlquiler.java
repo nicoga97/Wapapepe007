@@ -6,6 +6,7 @@ import edu.eci.pdsw.samples.entities.ItemRentado;
 import edu.eci.pdsw.samples.entities.TipoItem;
 import java.sql.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -104,5 +105,7 @@ public abstract class ServiciosAlquiler {
     public abstract void registrarItem(Item i) throws ExcepcionServiciosAlquiler;
 
     public abstract void vetarCliente(long docu, boolean estado) throws ExcepcionServiciosAlquiler;
+    
+    public abstract Map<Integer,Item> getItemsDisponibles();
 
 }

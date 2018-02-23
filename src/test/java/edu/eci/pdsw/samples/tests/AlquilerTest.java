@@ -23,9 +23,14 @@ import static org.junit.Assert.*;
  * Frontera:
  * CF1: Multas a devoluciones hechas en la fecha exacta (multa 0).
  * 
+ * 
  * Clases de equivalencia:
  * CE1: Multas hechas a devolciones realizadas en fechas posteriores
  * a la limite. (multa multa_diaria*dias_retraso)
+ * 
+ * CE2: Devoluciones hechas entre la fecha exacta y limite
+ * 
+ *  
  * 
  * 
  * 
@@ -74,6 +79,24 @@ public class AlquilerTest {
                 + "cuando la devolucion se realiza varios dias despues del limite."
                 ,sa.valorMultaRetrasoxDia()*3,sa.consultarMultaAlquiler(55, java.sql.Date.valueOf("2005-12-28")));
                 
+    }
+    
+    @Test
+    public void CE2Test() throws ExcepcionServiciosAlquiler{
+    	ServiciosAlquiler sa=ServiciosAlquilerItemsStub.getInstance();
+    	
+    	Item i1=new Item(sa.consultarTipoItem(1), 55, "Hulk", "Hulk es una película de superhéroes  basada en la serie de cómic homónima de Marvel.", java.sql.Date.valueOf("2005-06-08"), 2000, "DVD", "Ciencia Ficcion");        
+        sa.registrarCliente(new Cliente("Nico Garcia",9843,"24234","norte bogota","nicoga97@gmail.com"));
+        sa.registrarItem(i1);
+                
+        Item item=sa.consultarItem(55);
+        
+        sa.registrarAlquilerCliente(java.sql.Date.valueOf("2005-12-20"), 9843, item, 5);
+        //prueba: 3 dias de retraso
+        /*assertEquals("No se calcula correctamente la multa "
+                + "cuando la devolucion se realiza varios dias despues del limite."
+                ,sa.valorMultaRetrasoxDia()*3,sa.consultarMultaAlquiler(55, java.sql.Date.valueOf("2005-12-28")));*/
+        assertEquals(sa.consultarCostoAlquiler(55, 2), sa.getItemsDisponibles().get(55).getTarifaxDia()*2);
     }
     
     
