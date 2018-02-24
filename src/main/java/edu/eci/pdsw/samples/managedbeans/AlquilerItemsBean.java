@@ -107,5 +107,12 @@ public class AlquilerItemsBean implements Serializable {
         em="";
         
     }
+     public String  buttonListener1() throws ExcepcionServiciosAlquiler{
+        if(clienteSeleccionado!=null){
+        return "RegistroClienteltem";
+        }
+       
+        
+    
 
 }
