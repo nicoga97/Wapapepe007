@@ -1,11 +1,51 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3c.org/1999/xhtml"
+<!DOCTYPE xhtml>
+<xhtml xmlns="http://www.w3c.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui" 
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head></h:head>
+    <h:head> </h:head>
     <h:body>
-        
+            <h:form id="bloque" >
+                <p:dataTable id="tabla" var="cliente" value="#{AlquilerItems.sp.consultarClientes()}" selectionMode="single"
+                             selection="#{AlquilerItems.clienteSeleccionado}" rowKey="#{cliente.documento}" >
+                    <f:facet name="header">
+                        Lista de Clientes
+                    </f:facet>
+                    <p:column>
+                        <f:facet name="header">
+                            Documento 
+                        </f:facet>
+                        #{cliente.documento}
+                    </p:column>
+                    <p:column headerText="" >
+                        <f:facet name="header">
+                           Nombre
+                        </f:facet>
+                        #{cliente.nombre}
+                    </p:column>
+                    <p:column headerText="" >
+                        <f:facet name="header">
+                           e-mail
+                        </f:facet>
+                        #{cliente.email}
+                    </p:column>
+
+                </p:dataTable><br/><br/>
+                <p:outputLabel value="Agregar nuevo cliente " /><br/><br/><br/>
+                <p:outputLabel for="identificacion" value="Identificacion: " />
+                <p:inputText id="identificacion" value="#{AlquilerItems.doc}" required="true" label="gfd"/><br/><br/>
+                <p:outputLabel for="nombre" value="Nombre: " />
+                <p:inputText id="nombre" value="#{AlquilerItems.nom}" required="true"/><br/><br/>
+                <p:outputLabel for="direccion" value="Direccion: " />
+                <p:inputText id="direccion" value="#{AlquilerItems.dir}" required="true"/><br/><br/>
+                <p:outputLabel for="telefono" value="Telefono: " />
+                <p:inputText id="telefono" value="#{AlquilerItems.tel}" required="true"/><br/><br/>
+                <p:outputLabel for="email" value="Email: " />
+                <p:inputText id="email" value="#{AlquilerItems.em}" required="true"/><br/><br/>
+                <p:commandButton value="Agregar" id="ajax" update="tabla" actionListener="#{AlquilerItems.buttonListener()}" styleClass="ui-priority-primary" />
+            </h:form>  
+            
+    
   
     </h:body>
-</html>
+</xhtml>
