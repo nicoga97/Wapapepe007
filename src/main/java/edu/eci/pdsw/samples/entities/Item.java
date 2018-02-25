@@ -21,7 +21,20 @@ public class Item implements Serializable{
     private long tarifaxDia;
     private String formatoRenta;
     private String genero;
-
+    
+    public Item(int i){
+        TipoItem tipo1=new TipoItem(i,"Elemento no."+Integer.toString(i));
+        this.tipo = tipo1;
+        this.id = tipo.getID();
+        this.nombre = "Elemento no."+Integer.toString(i);
+        this.descripcion = "Elemento no."+Integer.toString(i);
+        this.fechaLanzamiento = new Date(10,10,2017);
+        this.tarifaxDia = 1000;
+        this.formatoRenta = "renta";
+        this.genero = "drama";
+    
+    }
+    
     public Item(TipoItem tipo, int id, String nombre, String descripcion, Date fechaLanzamiento, long tarifaxDia, String formatoRenta, String genero) {
         this.tipo = tipo;
         this.id = id;

@@ -11,11 +11,17 @@
                 <f:facet name="header">
                     Lista de Clientes
                 </f:facet>
-                <p:column>
+                <p:column  >
+                    
                     <f:facet name="header">
                         Documento 
                     </f:facet>
-                    #{cliente.documento}
+                   <h:commandLink action="#{AlquilerItems.setClienteSeleccionado(cliente)}" immediate="true" >
+	          <f:ajax render="@form"/>
+	       		<h:outputText id="login"
+	                       value=" #{cliente.documento}"/>
+				 </h:commandLink>
+                   
                 </p:column>
                 <p:column headerText="" >
                     <f:facet name="header">
@@ -31,11 +37,11 @@
                 </p:column><br/><br/>
 
             </p:dataTable><br/><br/>
-            <p:button outcome="RegistroClienteItem" value="Consultar cliente seleccionado" >
-            </p:button><br/><br/>
+            <p:button outcome="RegistroClienteItem"  value="Consultar cliente seleccionado"  >
+            Para cambiar, seleccionar No. de documento de cada cliente<br/></p:button><br/><br/>
             <p:outputLabel value="Agregar nuevo cliente " /><br/><br/><br/>
             <p:outputLabel for="identificacion" value="Identificacion: " />
-            <p:inputText id="identificacion" value="#{AlquilerItems.doc}" required="true" label="gfd"/><br/><br/>
+            <p:inputText id="identificacion" value="#{AlquilerItems.doc}" required="true" /><br/><br/>
             <p:outputLabel for="nombre" value="Nombre: " />
             <p:inputText id="nombre" value="#{AlquilerItems.nom}" required="true"/><br/><br/>
             <p:outputLabel for="direccion" value="Direccion: " />

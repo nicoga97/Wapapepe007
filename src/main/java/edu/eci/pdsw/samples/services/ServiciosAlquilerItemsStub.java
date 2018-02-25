@@ -21,7 +21,7 @@ import java.util.Map;
  */
 public class ServiciosAlquilerItemsStub extends ServiciosAlquiler implements Serializable{
     
-    private static final int MULTA_DIARIA=5000;
+    public static final int MULTA_DIARIA=5000;
     private final static long MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000;
     
     private final Map<Long,Cliente> clientes;

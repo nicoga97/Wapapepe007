@@ -1,5 +1,1 @@
-target
-nb-configuration.*
-*.project
-*.classpath
-
+/target/
